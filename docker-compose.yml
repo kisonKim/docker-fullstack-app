@@ -33,6 +33,6 @@ services:
       - ./mysql/mysql_data:/var/lib/mysql
       - ./mysql/sqls/:/docker-entrypoint-initdb.d/
     environment:
-      MYSQL_ROOT_PASSWORD: kisonkim
+      MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABSE: myapp
   

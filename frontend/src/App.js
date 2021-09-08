@@ -7,7 +7,7 @@ function App() {
 
   useEffect(()=>{
     axios.get('/api/values').then(response=>{
-      console.log('response',response)
+      console.log('response',response.data)
       setLists(response.data)
     })
   },[])
@@ -27,7 +27,7 @@ function App() {
         console.log('response',res)
         setLists([
           ...lists,
-          response.data
+          res.data
         ])
         setValue("");
 
@@ -44,9 +44,9 @@ function App() {
         
         <div className="container">
 
-          {lists && lists.map((list,index)=>{
+          {lists && lists.map((list,index)=>(
             <li key={index}>{list.value}</li>
-          })}
+          ))}
           <form className="example" onSubmit={submitHandler}>
             <input type="text" onChange={changeHandler} placeholder="입력해주세요..." value={value}/>
             <button type="submit">확인</button>
