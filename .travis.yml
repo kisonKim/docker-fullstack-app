@@ -1,0 +1,20 @@
+language: generic
+
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t mattkim/react-test-app -f ./frontend/Dockerfile.dev ./frontend
+
+
+script:
+  - docker run -e CI=true mattkim/react-test-app npm run test
+
+after_success:
+  - docker build -t mattkim/docker-frontend ./frontend
+  - docker build -t mattkim/docker-backend ./backend
+  - docker build -t mattkim/docker-nginx ./nginx
+
+# 8분 47초 부터 보세요
